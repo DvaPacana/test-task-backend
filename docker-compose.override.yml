@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  ## MYSQL
+  mysql:
+    ports:
+      - ${DOCKER_MYSQL_PORT}:3306
+  ## REDIS
+  redis:
+    ports:
+      - ${DOCKER_REDIS_PORT}:6379
