@@ -10,7 +10,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "moneyphp/money": "^4.0",
+        "moneyphp/money": "^3.3",
         "predis/predis": "^2.0"
     },
     "require-dev": {

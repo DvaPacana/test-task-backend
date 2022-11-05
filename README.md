@@ -1,3 +1,23 @@
+#### установка
+```
+cp .env.example .env
+docker compose up -d
+docker compose exec php composer install
+docker compose exec php php artisan key:generate
+docker compose exec php php artisan migrate
+docker compose exec php php artisan app:install 
+```
+
+#### обработка отложенных платежей
+```
+docker compose exec php php artisan handle:invoice:deferred
+```
+
+#### тесты
+```
+docker compose exec php php artisan test --stop-on-failure
+```
+
 <!-- title: Тестовое задание -->
 <p>
     <h1 align="center">Тестовое задание Laravel</h1>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6892b5693ed07ab5c5c7d9932f9f5244",
+    "content-hash": "2cc24dcb1ae65d685c7287337db8cf03",
     "packages": [
         {
             "name": "brick/math",
@@ -1613,43 +1613,41 @@
         },
         {
             "name": "moneyphp/money",
-            "version": "v4.0.5",
+            "version": "v3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moneyphp/money.git",
-                "reference": "cee58435ff82a5de252c516e6a31beb674898985"
+                "reference": "0dc40e3791c67e8793e3aa13fead8cf4661ec9cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/cee58435ff82a5de252c516e6a31beb674898985",
-                "reference": "cee58435ff82a5de252c516e6a31beb674898985",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/0dc40e3791c67e8793e3aa13fead8cf4661ec9cd",
+                "reference": "0dc40e3791c67e8793e3aa13fead8cf4661ec9cd",
                 "shasum": ""
             },
             "require": {
-                "ext-bcmath": "*",
-                "ext-filter": "*",
                 "ext-json": "*",
-                "php": "~8.0.0 || ~8.1.0"
+                "php": ">=5.6"
             },
             "require-dev": {
-                "cache/taggable-cache": "^1.1.0",
-                "doctrine/coding-standard": "^9.0",
-                "doctrine/instantiator": "^1.4.0",
+                "cache/taggable-cache": "^0.4.0",
+                "doctrine/instantiator": "^1.0.5",
+                "ext-bcmath": "*",
                 "ext-gmp": "*",
                 "ext-intl": "*",
-                "florianv/exchanger": "^2.6.3",
-                "florianv/swap": "^4.3.0",
+                "florianv/exchanger": "^1.0",
+                "florianv/swap": "^3.0",
+                "friends-of-phpspec/phpspec-code-coverage": "^3.1.1 || ^4.3",
                 "moneyphp/iso-currencies": "^3.2.1",
-                "php-http/message": "^1.11.0",
-                "php-http/mock-client": "^1.4.1",
-                "phpbench/phpbench": "^1.2.5",
-                "phpspec/phpspec": "^7.2",
-                "phpunit/phpunit": "^9.5.4",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "psr/cache": "^1.0.1",
-                "vimeo/psalm": "~4.7.0 || ^4.8.2"
+                "php-http/message": "^1.4",
+                "php-http/mock-client": "^1.0.0",
+                "phpspec/phpspec": "^3.4.3",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.18 || ^8.5",
+                "psr/cache": "^1.0",
+                "symfony/phpunit-bridge": "^4"
             },
             "suggest": {
+                "ext-bcmath": "Calculate without integer limits",
                 "ext-gmp": "Calculate without integer limits",
                 "ext-intl": "Format Money objects with intl",
                 "florianv/exchanger": "Exchange rates library for PHP",
@@ -1695,9 +1693,9 @@
             ],
             "support": {
                 "issues": "https://github.com/moneyphp/money/issues",
-                "source": "https://github.com/moneyphp/money/tree/v4.0.5"
+                "source": "https://github.com/moneyphp/money/tree/v3.3.3"
             },
-            "time": "2022-08-11T09:12:20+00:00"
+            "time": "2022-09-21T07:43:36+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7981,5 +7979,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
