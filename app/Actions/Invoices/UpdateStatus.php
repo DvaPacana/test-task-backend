@@ -18,7 +18,10 @@ final class UpdateStatus
 {
     public static function execute(InvoiceData $data): Invoice
     {
-        $invoice = Invoice::findOrFail($data->id);
+        $invoice = Invoice::query()
+            ->where('id', $data->id)
+            ->where('status', InvoiceStatus::CREATED)
+            ->firstOrFail();
 
         /** @var Merchant $merchant */
         $merchant = $invoice->merchant()->first();
@@ -26,6 +29,11 @@ final class UpdateStatus
         $currentStatus = $availableLimit > 0
             ? InvoiceStatus::COMPLETED
             : InvoiceStatus::DEFERRED;
+
+        // TODO второе решение с отложенным платежом
+        // драйвер queue database
+        // Invoice::status = InvoiceStatus::DEFERRED
+        // UpdateInvoiceStatusJob::dispatch($data)->delay(Carbon::now()->addDay());
 
         DB::beginTransaction();
 
