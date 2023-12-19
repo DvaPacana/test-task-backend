@@ -23,7 +23,7 @@ class PaymentController extends Controller
         return $gateway->processPayment($request);
     }
 
-    private function determineGateway($request): PaymentGatewayInterface|\Exception {
+    public function determineGateway($request): PaymentGatewayInterface|\Exception {
 
         if ($request->has('merchant_id')) {
             return new GatewayOneStrategy();
