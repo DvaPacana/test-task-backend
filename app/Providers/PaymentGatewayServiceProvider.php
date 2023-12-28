@@ -42,7 +42,7 @@ class PaymentGatewayServiceProvider extends ServiceProvider
         $hasDriver = in_array($gateway, config('payment.gateways'));
         $class = config('payment.drivers.' . $gateway . '.validation');
 
-        return $hasDriver && class_exists($class);
+        return $hasDriver && class_exists($class) && is_subclass_of($class, PaymentGatewayRequest::class);
     }
 
     protected function hasService(string $gateway)
@@ -50,7 +50,7 @@ class PaymentGatewayServiceProvider extends ServiceProvider
         $hasDriver = in_array($gateway, config('payment.gateways'));
         $class = config('payment.drivers.' . $gateway . '.service');
 
-        return $hasDriver && class_exists($class);
+        return $hasDriver && class_exists($class) && is_subclass_of($class, PaymentGateway::class);
     }
 
     public function boot(): void
