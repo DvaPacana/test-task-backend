@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/payment/{gateway}', [\App\Http\Controllers\PaymentController::class, 'process'])
     ->name('payment.process')
+    ->middleware('throttle:payment')
     ->whereIn('gateway', config('payment.gateways'));

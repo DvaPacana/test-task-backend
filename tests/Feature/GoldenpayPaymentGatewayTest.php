@@ -37,6 +37,37 @@ class GoldenpayPaymentGatewayTest extends TestCase
         $this->assertModelExists($model);
     }
 
+    public function test_gateway_rate_limiter_error()
+    {
+        $data = [
+            "merchant_id" => 6,
+            "payment_id" => 13,
+            "status" => "completed",
+            "amount" => 500,
+            "amount_paid" => 500,
+            "timestamp" => 1654103837,
+            "sign" => "f027612e0e6cb321ca161de060237eeb97e46000da39d3add08d09074f931728"
+        ];
+
+        $response = $this->postJson(
+            route('payment.process', ['gateway' => 'goldenpay']),
+            $data,
+        );
+
+        $response->assertSuccessful();
+
+        /*
+         * В конфиге payments_limit === 1, делаем сразу второй платеж и получаем 429 ошибку
+         * */
+        $response = $this->postJson(
+            route('payment.process', ['gateway' => 'goldenpay']),
+            $data,
+        );
+
+        $response->assertStatus(429);
+
+    }
+
     public function test_gateway_cannot_process_payment_with_invalid_sign()
     {
         $data = [

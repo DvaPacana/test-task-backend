@@ -36,5 +36,15 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        RateLimiter::for('payment', function (Request $request) {
+            $gateway = $request->route('gateway');
+
+            $limit = config("payment.drivers.{$gateway}.payments_limit");
+
+            return isset($limit)
+                ? Limit::perDay((int)$limit)->by($gateway)
+                : Limit::none();
+        });
     }
 }

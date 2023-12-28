@@ -13,6 +13,11 @@ class PaymentController extends Controller
     {
         $gateway->process($request->validated());
 
+        $gatewayName = $request->route('gateway');
+        $limiterName = config('payment.rate_limiter_name');
+
+        \RateLimiter::hit($limiterName . $gatewayName);
+
         return response()->json(['success' => true]);
     }
 }
